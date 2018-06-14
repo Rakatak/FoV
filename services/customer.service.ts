@@ -62,15 +62,4 @@ export class CustomerService {
         var long = valueArray[2].split(":")[1]
         return new Customer(id, new DCoordinates(+lat, +long))
     }
-
-
-    // entry = entry.replace('id', '\"id\"');
-    // entry = entry.replace('lat', '\"lat\"');
-    // entry = entry.replace('long', '\"long\"');
-
-    // var t = this.begin.concat(entry.substring(0, entry.length - 2));
-    // t = t.concat(this.end);
-    // var k = JSON.parse(t);
-
-
 }
