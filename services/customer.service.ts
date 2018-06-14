@@ -14,6 +14,7 @@ export class CustomerService {
 
     distanceService: DistanceService = new DistanceService(); 
 
+    // only returns customers with valid information and within 100km, eg. 100000 metres
     getValidCustomers(arrayText:Array<string>): Array<Customer>{
         var aArray: Array<Customer> = this.getAllCustomers(arrayText);
         var cArray: Array<Customer> = [];
@@ -34,7 +35,7 @@ export class CustomerService {
     }
 
 
-
+    // returns all customers regardless of correctness or distance
     getAllCustomers(arrayText:Array<string>): Array<Customer>{
         var cArray: Customer[] = [];
 
@@ -47,13 +48,14 @@ export class CustomerService {
         return this.allCustomerList;
     }
 
-
+    // helper method to read in a txt file
     public readInput(txtPath: string): Array<string>{
         var text = fs.readFileSync(path.join(__dirname, txtPath)).toString('utf8');
         return text.split("\n").sort();
     }
     
-    protected mapValues(entry: string): Customer {
+    // helper method to map the value to a Customer object
+    private mapValues(entry: string): Customer {
         var valueArray = entry.split(",");
         var id = valueArray[0].split(":")[1].replace(/\s/g, ""); //remove whitespace
         var lat = valueArray[1].split(":")[1]

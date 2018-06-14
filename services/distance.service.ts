@@ -4,6 +4,8 @@ import { Constants } from "../constants";
 
 export class DistanceService {
 
+    // returns distance in metres, utilizing the global distance function
+    // takes two 2D-Coordinates as inputs
     public getDistance(location1: DCoordinates, loction2: DCoordinates): number {
             
         var φ1 = this.toRadians(location1.latitude);
@@ -21,6 +23,7 @@ export class DistanceService {
         return distance;
     }
 
+    // helper method to convert degrees to radians
     private toRadians(degrees: number): number {
         return degrees * Math.PI / 180;
     }
